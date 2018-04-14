@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import MainScene from '../MainScene/MainScene';
 
 class App extends Component {
   render() {
     return (
-      <div>App</div>
+      <div>
+        <MainScene/>
+      </div>
     );
   }
 }
