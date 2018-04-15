@@ -172,6 +172,8 @@ module.exports = {
                   
                   presets: [require.resolve('babel-preset-react-app')],
                   plugins: [
+                    'transform-decorators-legacy',
+                    'transform-class-properties',
                     [
                       require.resolve('babel-plugin-named-asset-import'),
                       {

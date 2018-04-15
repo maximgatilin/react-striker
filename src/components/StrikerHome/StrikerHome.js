@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
+import {inject, observer} from 'mobx-react';
 import styles from './StrikerHome.module.css';
 import StrikerWeapon from '../StrikerWeapon/StrikerWeapon';
 
+@inject('WeaponStore')
+@observer
 class StrikerHome extends Component {
   constructor(props) {
     super(props);
 
     this.containerRef = React.createRef();
-
-    this.state = {
-      topWeaponPosition: 0
-    }
   }
 
   onMouseMove = (event) => {
@@ -18,13 +17,13 @@ class StrikerHome extends Component {
     const {pageY} = event;
     const topPositionInsideContainer = pageY - containerTopOffset;
 
-    this.setState({topWeaponPosition: topPositionInsideContainer});
+    this.props.WeaponStore.setTopPosition(topPositionInsideContainer);
   };
 
   render() {
     return (
       <div className={styles.container} onMouseMove={this.onMouseMove} ref={this.containerRef}>
-        <StrikerWeapon topPosition={this.state.topWeaponPosition}/>
+        <StrikerWeapon topPosition={this.props.WeaponStore.topPosition}/>
       </div>
     );
   }
