@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 // styles
 import styles from './BulletsRoad.module.css';
+// components
+import Bullet from '../Bullet/Bullet';
 
 @inject('BulletsRoadStore')
 @observer
@@ -16,11 +18,8 @@ class MainScene extends Component {
     return (
       <div className={styles.container}>
         {bulletsAsArray.map((bullet) => {
-          return <div key={bullet.id}>
-            {bullet.y} {bullet.id}
-          </div>
+          return <Bullet key={bullet.id} {...bullet}/>
         })}
-
       </div>
     );
   }

@@ -1,0 +1,1 @@
+export const BULLET_AREA_WIDTH = 598;
