@@ -6,6 +6,10 @@ class BulletsRoadStore {
   @action addBullet(bullet) {
     this.bullets.set(bullet.id, bullet);
   }
+
+  @action removeBullet(bulletId) {
+    this.bullets.delete(bulletId);
+  }
 }
 
 const store = new BulletsRoadStore();

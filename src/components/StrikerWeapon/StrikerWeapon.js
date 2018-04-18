@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styles from './StrikerWeapon.module.css';
+import {WEAPON_HEIGHT} from '../../utils/constants';
 
 class StrikerWeapon extends Component {
   static propTypes = {
@@ -8,10 +9,11 @@ class StrikerWeapon extends Component {
   };
 
   render() {
-    const topPosition = Math.max(0, this.props.topPosition - 2);
+    const topPosition = Math.max(0, this.props.topPosition - WEAPON_HEIGHT/2);
 
     return (
       <div className={styles.container} style={{
+        height: WEAPON_HEIGHT,
         transform: `translate(0, ${topPosition}px)`
       }}>
 

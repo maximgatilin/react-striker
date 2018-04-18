@@ -18,7 +18,9 @@ class MainScene extends Component {
     return (
       <div className={styles.container}>
         {bulletsAsArray.map((bullet) => {
-          return <Bullet key={bullet.id} {...bullet}/>
+          return <Bullet key={bullet.id} {...bullet} onFinishPath={({id}) => {
+            this.props.BulletsRoadStore.removeBullet(id);
+          }}/>
         })}
       </div>
     );
