@@ -5,7 +5,7 @@ import styles from './MainScene.module.css';
 // components
 import StrikerHome from '../StrikerHome/StrikerHome';
 import BulletsRoad from '../BulletsRoad/BulletsRoad';
-import TargetHome from '../TargetHome/TargetHome';
+import EnemyHome from '../EnemyHome/EnemyHome';
 
 class MainScene extends Component {
   render() {
@@ -13,7 +13,7 @@ class MainScene extends Component {
       <div className={styles.container}>
         <StrikerHome/>
         <BulletsRoad />
-        <TargetHome/>
+        <EnemyHome/>
       </div>
     );
   }
