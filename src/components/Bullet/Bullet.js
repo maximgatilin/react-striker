@@ -25,7 +25,7 @@ class Bullet extends Component {
     const interval = setInterval(() => {
       if (this.state.left >= BULLET_AREA_WIDTH - BULLET_WIDTH) {
         clearInterval(interval);
-        this.props.onFinishPath({id: this.props.id});
+        this.props.onFinishPath({id: this.props.id, y: this.props.y});
       } else {
         this.setState({left: this.state.left + 1});
       }
