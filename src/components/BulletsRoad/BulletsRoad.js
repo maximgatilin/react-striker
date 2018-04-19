@@ -15,7 +15,7 @@ import {
 @observer
 class MainScene extends Component {
   getIsBulletHitTarget(y) {
-    const topBulletPosition = y;
+    const topBulletPosition = y - BULLET_HEIGHT/2;
     const bottomBulletPosition = topBulletPosition + BULLET_HEIGHT;
     const topWeaponPosition = this.props.EnemyWeaponStore.topPosition;
     const bottomWeaponPosition = topWeaponPosition + ENEMY_WEAPON_HEIGHT;
