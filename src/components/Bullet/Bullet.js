@@ -27,7 +27,7 @@ class Bullet extends Component {
         clearInterval(interval);
         this.props.onFinishPath({id: this.props.id, y: this.props.y});
       } else {
-        this.setState({left: this.state.left + 1});
+        this.setState({left: this.state.left + 2});
       }
     }, 10);
   }
