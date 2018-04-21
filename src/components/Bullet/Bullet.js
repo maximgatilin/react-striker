@@ -12,7 +12,7 @@ class Bullet extends Component {
     super(props);
 
     this.state = {
-      left: 0
+      left: this.props.owner === 'player' ? 0 : BULLET_AREA_WIDTH - BULLET_WIDTH
     }
   }
 
@@ -22,14 +22,27 @@ class Bullet extends Component {
   };
 
   componentDidMount() {
-    const interval = setInterval(() => {
-      if (this.state.left >= BULLET_AREA_WIDTH - BULLET_WIDTH) {
-        clearInterval(interval);
-        this.props.onFinishPath({id: this.props.id, y: this.props.y});
-      } else {
-        this.setState({left: this.state.left + 2});
-      }
-    }, 10);
+    if (this.props.owner === 'player') {
+      const interval = setInterval(() => {
+        if (this.state.left >= BULLET_AREA_WIDTH - BULLET_WIDTH) {
+          clearInterval(interval);
+          this.props.onFinishPath({id: this.props.id, y: this.props.y, owner: this.props.owner});
+        } else {
+          this.setState({left: this.state.left + 2});
+        }
+      }, 10);
+    }
+
+    if (this.props.owner === 'enemy') {
+      const interval = setInterval(() => {
+        if (this.state.left < 1) {
+          clearInterval(interval);
+          this.props.onFinishPath({id: this.props.id, y: this.props.y, owner: this.props.owner});
+        } else {
+          this.setState({left: this.state.left - 2});
+        }
+      }, 10);
+    }
   }
 
   render() {

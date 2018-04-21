@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './EnemyWeapon.module.css';
 import {ENEMY_WEAPON_HEIGHT} from '../../utils/constants';
 import {inject, observer} from 'mobx-react/index';
+import nanoid from 'nanoid';
 
 @inject('EnemyWeaponStore')
+@inject('BulletsRoadStore')
 @observer
 class EnemyWeapon extends Component {
   static propTypes = {
@@ -14,7 +16,7 @@ class EnemyWeapon extends Component {
   componentDidMount() {
     let direction = 'bottom';
 
-    const interval = setInterval(() => {
+    const movementInterval = setInterval(() => {
       const currentPosition = this.props.topPosition;
       if (currentPosition > 80 && direction === 'bottom') {
         direction = 'top';
@@ -25,6 +27,14 @@ class EnemyWeapon extends Component {
       const nextPosition = direction ==='top' ? currentPosition - 1 : currentPosition + 1;
       this.props.EnemyWeaponStore.setTopPosition(nextPosition);
     }, 20);
+
+    const strikeInterval = setInterval(() => {
+      this.props.BulletsRoadStore.addBullet({
+        id: nanoid(),
+        y: Number(this.props.topPosition),
+        owner: 'enemy'
+      });
+    }, 1000);
   }
 
   render() {

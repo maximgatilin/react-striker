@@ -25,7 +25,8 @@ class StrikerHome extends Component {
   onContainerClick = () => {
     this.props.BulletsRoadStore.addBullet({
       id: nanoid(),
-      y: Number(this.props.WeaponStore.topPosition)
+      y: Number(this.props.WeaponStore.topPosition),
+      owner: 'player'
     });
   };
 
