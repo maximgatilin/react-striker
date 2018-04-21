@@ -13,6 +13,8 @@ import {
 @inject('BulletsRoadStore')
 @inject('EnemyWeaponStore')
 @inject('WeaponStore')
+@inject('PlayerStore')
+@inject('EnemyStore')
 @observer
 class MainScene extends Component {
   getIsBulletHitTarget(y, owner) {
@@ -35,6 +37,14 @@ class MainScene extends Component {
     return !bulletAboveTarget && ! bulletBelowTarget;
   }
 
+  hitTarget(bulletOwner) {
+    if (bulletOwner === 'player') {
+      this.props.EnemyStore.damage();
+    } else {
+      this.props.PlayerStore.damage();
+    }
+  }
+
   render() {
     const bulletsAsArray = [];
     this.props.BulletsRoadStore.bullets.forEach(value => {
@@ -48,7 +58,7 @@ class MainScene extends Component {
             this.props.BulletsRoadStore.removeBullet(id);
             const isBulletHitTarget = this.getIsBulletHitTarget(y, owner);
             if (isBulletHitTarget) {
-              console.log('hit target');
+              this.hitTarget(owner);
             }
           }}/>
         })}

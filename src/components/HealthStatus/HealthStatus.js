@@ -13,7 +13,7 @@ class HealthStatus extends Component {
 
     return (
       <div>
-        {initialValue}/{currentValue}
+        {currentValue}/{initialValue}
       </div>
     );
   }

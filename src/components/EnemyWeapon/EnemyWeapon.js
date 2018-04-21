@@ -13,10 +13,15 @@ class EnemyWeapon extends Component {
     topPosition: PropTypes.number.isRequired
   };
 
+  componentWillUnmount() {
+    clearInterval(this.movementInterval);
+    clearInterval(this.strikeInterval);
+  }
+
   componentDidMount() {
     let direction = 'bottom';
 
-    const movementInterval = setInterval(() => {
+    this.movementInterval = setInterval(() => {
       const currentPosition = this.props.topPosition;
       if (currentPosition > 80 && direction === 'bottom') {
         direction = 'top';
@@ -28,7 +33,7 @@ class EnemyWeapon extends Component {
       this.props.EnemyWeaponStore.setTopPosition(nextPosition);
     }, 20);
 
-    const strikeInterval = setInterval(() => {
+    this.strikeInterval = setInterval(() => {
       this.props.BulletsRoadStore.addBullet({
         id: nanoid(),
         y: Number(this.props.topPosition),
