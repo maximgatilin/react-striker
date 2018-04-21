@@ -34,7 +34,7 @@ class EnemyWeapon extends Component {
         y: Number(this.props.topPosition),
         owner: 'enemy'
       });
-    }, 1000);
+    }, 3000);
   }
 
   render() {

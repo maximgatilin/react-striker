@@ -6,6 +6,7 @@ import styles from './MainScene.module.css';
 import StrikerHome from '../StrikerHome/StrikerHome';
 import BulletsRoad from '../BulletsRoad/BulletsRoad';
 import EnemyHome from '../EnemyHome/EnemyHome';
+import StatusBar from '../StatusBar/StatusBar';
 
 class MainScene extends Component {
   render() {
@@ -14,6 +15,7 @@ class MainScene extends Component {
         <StrikerHome/>
         <BulletsRoad />
         <EnemyHome/>
+        <StatusBar/>
       </div>
     );
   }

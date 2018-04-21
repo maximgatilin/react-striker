@@ -1,0 +1,19 @@
+.container {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  border: 1px solid #000;
+  border-top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.left {
+
+}
+
+.right {
+
+}
