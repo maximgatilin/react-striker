@@ -1,5 +1,13 @@
 import Player from '../storeTemplates/Player';
+import GameStore from './GameStore';
 
-const store = new Player();
+class PlayerStore extends Player {
+  beat() {
+    super.beat();
+    GameStore.loose();
+  }
+}
+
+const store = new PlayerStore();
 
 export default store;
